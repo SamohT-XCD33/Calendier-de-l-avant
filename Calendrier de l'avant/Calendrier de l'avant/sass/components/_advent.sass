@@ -1,0 +1,33 @@
+@use "../abstracts/_mixins" as mixins
+    
+.advent
+    // background-color: white
+    height: 100vh // vh = viewport height - vw = viewport width
+    display: grid
+    grid-template-columns: repeat(5, 1fr)
+    grid-template-rows: auto
+    gap: 1rem
+
+    &_box
+        @include mixins.flex-center()
+        @for $i from 1 through 24
+            &:nth-child(#{$i})
+                background-image: url("../images/image-#{$i}.svg")
+                background-repeat: no-repeat
+                background-position: center
+                background-size: contain
+
+    &_number
+        height: 100%
+        border-radius: 50% 50% 5% 5%
+        aspect-ratio: 1/1
+        @include mixins.flex-center()
+        background-image: url("../images/fond-paquet.jpg")
+        background-size: cover
+        font-family: 'Nabla', serif
+        font-size: 3rem
+        color: #c44f40
+        transition: opacity 0.5s ease-in
+
+        &.hide
+            opacity: 0
